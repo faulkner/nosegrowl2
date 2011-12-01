@@ -57,11 +57,11 @@ class NoseGrowl(Plugin):
         self.enabled = _check_growlnotify()
 
     def begin(self):
-        self.start_time = datetime.datetime.now()
+        self.start_time = datetime.datetime.utcnow()
         _growl(START_TITLE, '', START_ICON)
 
     def finalize(self, result):
-        self.end_time = datetime.datetime.now()
+        self.end_time = datetime.datetime.utcnow()
 
         if result.wasSuccessful():
             time_taken = self.end_time - self.start_time
